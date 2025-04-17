@@ -1,0 +1,43 @@
+<ion-header class="signup-header">
+  <ion-toolbar class="signup-toolbar">
+    <ion-title class="signup-title">Create Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding signup-background">
+  <div class="signup-container">
+    
+    <!-- ✅ Success Message -->
+    <ion-text color="success" *ngIf="successMessage">
+      <p class="message-text">{{ successMessage }}</p>
+    </ion-text>
+
+    <!-- ❌ Error Message -->
+    <ion-text color="danger" *ngIf="errorMessage">
+      <p class="message-text">{{ errorMessage }}</p>
+    </ion-text>
+
+    <!-- 📧 Email -->
+    <ion-item lines="none" class="signup-item">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <!-- 🔒 Password -->
+    <ion-item lines="none" class="signup-item">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+    <!-- 🔒 Confirm Password -->
+    <ion-item lines="none" class="signup-item">
+      <ion-label position="floating">Confirm Password</ion-label>
+      <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>
+    </ion-item>
+
+    <!-- 🔘 Signup Button -->
+    <ion-button expand="block" class="signup-button" (click)="signup()">
+      Sign Up
+    </ion-button>
+  </div>
+</ion-content>
