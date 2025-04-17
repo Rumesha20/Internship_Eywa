@@ -1,51 +1,27 @@
-# Internship_Eywa
+# Internship_Eywa_Inventory Management System
 1. Install Node.js and npm
 Download and install from: https://nodejs.org
 
 2. Install Ionic CLI and Angular CLI
 Open terminal and run:
-
-nginx
-Copy
-Edit
 npm install -g @ionic/cli @angular/cli
+
 3. Run Backend (srms-backend)
 Go to the backend folder:
-
-bash
-Copy
-Edit
 cd srms-backend
-Install packages:
-
-nginx
-Copy
-Edit
+4.Install packages:
 npm install
-Start the backend server:
 
-sql
-Copy
-Edit
+5.Start the backend server:
 npm start
+
 4. Run Frontend (arms-frontend)
 Open a new terminal.
-
 Go to the frontend folder:
+cd srms-frontend
 
-bash
-Copy
-Edit
-cd arms-frontend
-Install packages:
-
-nginx
-Copy
-Edit
+5.Install packages:
 npm install
-Start the Ionic app:
 
-nginx
-Copy
-Edit
+6.Start the Ionic app:
 ionic serve
