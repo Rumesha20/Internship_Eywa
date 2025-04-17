@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary" class="custom-header">
+    <ion-title class="dashboard-title">📊 Inventory Dashboard</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" class="custom-logout-button" (click)="logout()">Logout</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding dashboard-bg">
+  <div class="center-wrapper">
+
+    <div class="dashboard-actions">
+      <ion-button *ngIf="role === 'admin'" color="primary" (click)="openAddModal()">
+        + Add Item
+      </ion-button>
+
+      <ion-button *ngIf="role === 'admin'" color="primary" (click)="downloadCSV()">
+        ⬇️ Download CSV
+      </ion-button>
+    </div>
+
+    <ion-item lines="none" class="custom-search">
+      <ion-icon name="search-outline" slot="start" color="medium"></ion-icon>
+      <ion-input
+        placeholder="Search by name or category"
+        [(ngModel)]="searchTerm"
+        (ionInput)="filterItems()"
+      ></ion-input>
+    </ion-item>
+
+    <ion-list *ngIf="filteredItems.length > 0; else emptyList">
+      <ion-item *ngFor="let item of filteredItems; let i = index" lines="none" class="inventory-item">
+
+        <ion-thumbnail slot="start" *ngIf="item.Image">
+          <img [src]="item.Image" alt="Item Image" />
+        </ion-thumbnail>
+
+        <ion-label class="ion-text-wrap">
+          <h2>{{ item.ItemName }}</h2>
+          <p>📦 Category: <strong>{{ item.Category }}</strong></p>
+          <p>🔢 Quantity: <strong>{{ item.Quantity }}</strong></p>
+          <p>💰 Price: ₹{{ item.Price }}</p>
+          <p>🚚 Supplier: {{ item.Supplier }}</p>
+          <p>📅 Restock: {{ item.RestockDate | date: 'yyyy-MM-dd' }}</p>
+        </ion-label>
+
+        <ion-buttons slot="end" *ngIf="role === 'admin'">
+          <ion-button fill="clear" color="warning" (click)="openEditModal(item, i)">
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" color="danger" (click)="confirmDelete(i)">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-list>
+
+    <ng-template #emptyList>
+      <ion-text color="medium">
+        <p class="ion-text-center ion-padding-top">😕 No inventory items found.</p>
+      </ion-text>
+    </ng-template>
+  </div>
+</ion-content>
