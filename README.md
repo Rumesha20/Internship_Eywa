@@ -15,13 +15,13 @@ npm install
 5.Start the backend server:
 npm start
 
-4. Run Frontend (arms-frontend)
+6. Run Frontend (arms-frontend)
 Open a new terminal.
 Go to the frontend folder:
 cd srms-frontend
 
-5.Install packages:
+7.Install packages:
 npm install
 
-6.Start the Ionic app:
+8.Start the Ionic app:
 ionic serve
